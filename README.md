@@ -33,20 +33,50 @@ This repository contains the scripts and small input files needed to reproduce t
 
 ```
 Experimental-Evolution-Antifungal-Drugs/
-├── Drug_Dose_Determination_Analysis/   # Dose–response assays used to determine drug concentrations for experimental evolution
-├── Genomics_Analysis/                  # SNP QC, allele frequency modeling, analysis and annotation
-├── Growth_Phenotyping_Analysis/        # Doubling time and carrying capacity of evolved populations
+├── Drug_Dose_Determination_Analysis/      # Dose–response assays used to determine drug concentrations for experimental evolution
+│   ├── Input_files/
+│   ├── Scripts/
+│   └── Figures/                           # Fig. 
+├── Genomics_Analysis/
+│   ├── SNP_QC_Workflow/                   # Coverage QC, filtering, PCA, SFS, identifying fixed SNPs
+│   │   ├── Input_files/                   # See Figshare
+│   │   ├── Output_files/                  # See Figshare, except Coverage_Summary_Filtered.csv
+│   │   ├── Scripts/
+│   │   └── Figures/
+│   │       ├── Coverage/                  # Figs. 
+│   │       ├── PCA/                       # Fig. 
+│   │       └── SFS/                       # Fig. 
+│   ├── GLM_AF_Change_Workflow/            # Quasibinomial GLMs, candidate SNP identification
+│   │   ├── Input_files/                   # See Figshare
+│   │   ├── Output_files/                  # See Figshare
+│   │   └── Scripts/
+│   └── SNP_Analysis_and_Annotation_Workflow/   # Determining significant SNPs, SnpEff annotation, FungAMR, GO enrichment
+│       ├── Input_files/                   # partly Figshare
+│       ├── Output_files/
+│       ├── Scripts/
+│       └── Figures/
+│           ├── AF_Trajectory_Plots/       # Fig. 5B
+│           ├── Beta_Coefficient_Plot/     # Fig. 2
+│           ├── FKS1_Gene_Track_Plot/      # Fig. 
+│           ├── FungAMR_and_GO_Plots/      # Fig. 5A, 5C
+│           └── Manhattan/                 # Figs. 3, 4
+├── Growth_Phenotyping_Analysis/           # Analysis of growth performance data of evolved populations and ancestor
+│   ├── Input_files/
+│   ├── Output_files/
+│   ├── Scripts/
+│   └── Figures/                           # Fig. 
 └── README.md
 ```
 
+
 ### `Drug_Dose_Determination_Analysis/`
 
-Dose–response assays of the ancestral 4S population, used to select the low and high concentrations of each drug and to identify a combined-drug pairing that permitted growth.
+Dose–response assays of the ancestral 4S population, used to select the low and high concentrations of each drug and the combined-drug pairing. 
 
 | Script | Purpose |
 |---|---|
-| `[script]` | `[processes raw plate reader output]` |
-| `[script]` | `[fits dose–response curves; generates Fig. S1]` |
+| `Drug_dose_assays_script.R` | `Summarizes OD600 across drug doses and timepoints; generates Fig. S1` |
+
 
 ### `Genomics_Analysis/`
 
@@ -88,13 +118,15 @@ Candidate SNPs annotated with SnpEff and summarized at the gene level, cross-ref
 
 ### `Growth_Phenotyping_Analysis/`
 
-48-hour growth assays of T14 evolved populations across control, single-drug, combined-drug, and amphotericin B media. Doubling time and carrying capacity modeled with linear mixed-effects models (`lme4`) with replicate as a random effect; pairwise contrasts from estimated marginal means (`emmeans`), Tukey-corrected.
+48-hour growth assays of T14 evolved populations and the ancestor across control, single-drug, combined-drug, and amphotericin B media. 
 
 | Script | Purpose |
 |---|---|
-| `[script]` | `[extracts growth curves; computes DT and K]` |
-| `[script]` | `[fits mixed models; pairwise contrasts]` |
-| `[script]` | `[generates Figs. 6 and S6]` |
+| `Growth_phenotyping_script.R` | `Fits logistic growth curves to OD600 data for six assays, models doubling time and carrying capacity, generates Figs. 6 and S6` |
+
+The raw plate-reader exports are converted to formatted tables by a step near the top
+of the script that is commented out by default; the formatted tables it produces are
+included in `Output_files/`. Uncomment only if regenerating them from raw.
 
 ---
 
