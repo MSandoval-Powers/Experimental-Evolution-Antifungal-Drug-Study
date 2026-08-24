@@ -124,7 +124,7 @@ Input files are hosted on Figshare; output files are in the repository.
 
 | Script | Purpose |
 |---|---|
-| `Growth_phenotyping_script.R` | `Fits logistic growth curves to OD600 data for six assays, models doubling time and carrying capacity, generates Figs. 6 and S6` |
+| `Growth_phenotyping_script.R` | Fits logistic growth curves to OD600 data for six assays, models doubling time and carrying capacity, generates Figs. 6 and S6 |
 
 The raw plate-reader exports are converted to formatted tables by a step near the top of the script that is commented out by default; the formatted tables it produces are included in `Output_files/`. Uncomment only if regenerating them from raw.
 
