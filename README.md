@@ -76,7 +76,7 @@ Dose–response assays of the ancestral 4S population, used to select the low an
 
 | Script | Purpose |
 |---|---|
-| `Drug_dose_assays_script.R` | `Summarizes OD600 across drug doses and timepoints; generates Fig. S1` |
+| `Drug_dose_assays_script.R` | Summarizes OD600 across drug doses and timepoints; generates Fig. S1 |
 
 
 ### `Genomics_Analysis/`
