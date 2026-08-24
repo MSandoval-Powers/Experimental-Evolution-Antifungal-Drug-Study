@@ -117,19 +117,21 @@ Files too large for version control are archived on Figshare with **folder names
 **R** ≥ 4.5.1
 
 ```r
-install.packages(c("dplyr", "ggplot2", "lme4", "emmeans"))
+install.packages(c(
+  "tidyverse",      # ggplot2, dplyr, tidyr, stringr, readr, purrr, tibble
+  "data.table", "reshape2", "glue", "scales",
+  "cowplot", "patchwork", "ggpubr", "ggh4x", "ggridges", "ghibli",
+  "ggvenn", "ggVennDiagram", "ComplexUpset", "gggenes",
+  "factoextra", "svglite", "ggrastr",
+  "lme4", "lmerTest", "emmeans", "multcompView", "growthcurver",
+  "pbapply", "openxlsx"
+))
 
+# Required — Bioconductor
 if (!require("BiocManager")) install.packages("BiocManager")
-BiocManager::install(c("topGO", "org.Sc.sgd.db", "rrvgo"))
+BiocManager::install(c("topGO", "org.Sc.sgd.db", "rrvgo", "Rgraphviz", "rtracklayer"))
 ```
 
-**Command-line tools**
-
-| Tool | Version |
-|---|---|
-| BWA | `[version]` |
-| GATK | 4.5.0.0 |
-| SnpEff | `[version]` |
 
 ---
 
