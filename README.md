@@ -79,6 +79,8 @@ Dose–response assays of the ancestral 4S population, used to select the low an
 | `Drug_dose_assays_script.R` | Summarizes OD600 across drug doses and timepoints; generates Fig. S1 |
 
 
+
+
 ### `Genomics_Analysis/`
 
 The core genomic workflow, run in three stages. Each stage consumes the previous stage's output. Analysis begins from the merged SNP table; read alignment and variant
@@ -96,6 +98,7 @@ Input and output files for this stage are hosted on Figshare, except `Coverage_S
 | `SNP_QC_Workflow_Script.R` | Coverage QC, SNP filtering (126,215 → 64,764 SNPs), PCA, site frequency spectra, fixed-SNP identification, chromosome VIII coverage 
 
 
+
 **2 · `GLM_AF_Change_Workflow/`**
 
 Per-SNP quasibinomial GLMs weighted by read depth, fitted in two forms: 
@@ -108,6 +111,7 @@ single-treatment models (`AF ~ time`) testing for change within an environment, 
 Produces model output only; figures from these results are generated in stage 3. Input and output files for this stage are hosted on Figshare.
 
 
+
 **3 · `SNP_Analysis_and_Annotation_Workflow/`**
 
 Applies the top 5% significance threshold to the GLM output, classifies candidate SNPs as treatment-specific or shared using the pairwise slope contrasts, and merges them with the fixed-SNP candidates from stage 1. Candidates are annotated with SnpEff, summarized at the gene level, cross-referenced against the *S. cerevisiae* subset of the FungAMR database (Bédard et al. 2025), and tested for GO biological process enrichment with `topGO` and redundancy reduction in `rrvgo`.
@@ -117,6 +121,9 @@ Applies the top 5% significance threshold to the GLM output, classifies candidat
 | `SNP_analysis_and_annotation_script.R` | Candidate classification, SnpEff annotation, FungAMR enrichment, GO enrichment, and all main-text figures (Figs. 2–5) |
 
 Input files are hosted on Figshare; output files are in the repository.
+
+
+
 
 ### `Growth_Phenotyping_Analysis/`
 
