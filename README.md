@@ -17,7 +17,7 @@ Figures are included alongside the scripts that generate them. Where a figure wa
 
 ### Experimental design
 
-| Treatment | Drug condition | Replicates | Transfers | Est. generations |
+| Treatment Name | Treatment condition | Replicates | Transfers | Est. generations |
 |---|---|---|---|---|
 | Low CAS | 0.035 µM caspofungin | 12 | 13 | 56 |
 | High CAS | 0.07 µM caspofungin | 12 | 12 | 54 |
