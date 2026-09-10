@@ -1,6 +1,6 @@
 # Experimental-Evolution-Antifungal-Drug-Study
 
-Analysis code and data for **Sandoval-Powers M, Crestani G, Dugo H, Shearman E, Burke MK.** *Experimental evolution reveals distinct genomic trajectories under different intensities and combinations of antifungal selection in* Saccharomyces cerevisiae.
+Analysis code and data for **Sandoval-Powers M, Crestani G, Dugo H, Shearman E, Burke MK.** *Experimental evolution reveals distinct genomic trajectories under different intensities and combinations of antifungal selection in Saccharomyces cerevisiae*.
 
 [![DOI](https://img.shields.io/badge/data-Figshare-blue)](https://doi.org/PLACEHOLDER)
 [![Data](https://img.shields.io/badge/reads-NCBI%20SRA-green)](https://www.ncbi.nlm.nih.gov/bioproject/PLACEHOLDER)
