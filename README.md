@@ -37,35 +37,35 @@ Experimental-Evolution-Antifungal-Drugs/
 ├── Drug_Dose_Determination_Analysis/      # Dose–response assays used to determine drug concentrations for experimental evolution
 │   ├── Input_files/
 │   ├── Scripts/
-│   └── Figures/                           # Fig. 
+│   └── Figures/                           # Fig. S1
 ├── Genomics_Analysis/
 │   ├── SNP_QC_Workflow/                   # Coverage QC, filtering, PCA, SFS, identifying fixed SNPs
 │   │   ├── Input_files/                   # See Figshare
 │   │   ├── Output_files/                  # See Figshare, except Coverage_Summary_Filtered.csv
 │   │   ├── Scripts/
 │   │   └── Figures/
-│   │       ├── Coverage/                  # Figs. 
-│   │       ├── PCA/                       # Fig. 
-│   │       └── SFS/                       # Fig. 
+|   |       ├── ChrVIII_Coverage_Plot/     # Fig. S#
+│   │       ├── PCA/                       # Fig. S2
+│   │       └── SFS/                       # Fig. S3
 │   ├── GLM_AF_Change_Workflow/            # Quasibinomial GLMs, candidate SNP identification
 │   │   ├── Input_files/                   # See Figshare
 │   │   ├── Output_files/                  # See Figshare
 │   │   └── Scripts/
 │   └── SNP_Analysis_and_Annotation_Workflow/   # Determining significant SNPs, SnpEff annotation, FungAMR, GO enrichment
-│       ├── Input_files/                   # partly Figshare
+│       ├── Input_files/                   # Partly Figshare
 │       ├── Output_files/
 │       ├── Scripts/
 │       └── Figures/
-│           ├── AF_Trajectory_Plots/       # Fig. 5B
+│           ├── AF_Trajectory_Plots/       # Fig. S#
 │           ├── Beta_Coefficient_Plot/     # Fig. 2
-│           ├── FKS1_Gene_Track_Plot/      # Fig. 
-│           ├── FungAMR_and_GO_Plots/      # Fig. 5A, 5C
+│           ├── FKS1_Gene_Track_Plot/      # Fig. S# 
+│           ├── FungAMR_and_GO_Plots/      # Fig. 5
 │           └── Manhattan/                 # Figs. 3, 4
 ├── Growth_Phenotyping_Analysis/           # Analysis of growth performance data of evolved populations and ancestor
-│   ├── Input_files/
+│   ├── Input_files/                      
 │   ├── Output_files/
 │   ├── Scripts/
-│   └── Figures/                           # Fig. 
+│   └── Figures/                           # Figs. 6, S# 
 └── README.md
 ```
 
@@ -76,7 +76,7 @@ Dose–response assays of the ancestral 4S population, used to select the low an
 
 | Script | Purpose |
 |---|---|
-| `Drug_dose_assays_script.R` | Summarizes OD600 across drug doses and timepoints; generates Fig. S1 |
+| `Drug_dose_assays_script.R` | Summarizes OD600 across drug doses and timepoints | Generates Fig. S1 |
 
 ---
 
@@ -97,7 +97,7 @@ Also covers coverage QC, exploratory PCA and site frequency spectra, identificat
 
 | Script | Purpose |
 |---|---|
-| `SNP_QC_Workflow_Script.R` | Coverage QC, SNP filtering (126,215 → 64,764 SNPs), PCA, site frequency spectra, fixed-SNP identification, chromosome VIII coverage 
+| `SNP_QC_Workflow_Script.R` | Coverage QC, SNP filtering, PCA, site frequency spectra, fixed-SNP identification, chromosome VIII coverage | Generates Figs.  |
 
 Input and output files for this stage are hosted on Figshare, except `Coverage_Summary_Filtered.csv`, which is in the repository.
 
@@ -112,7 +112,7 @@ Three cross-treatment contrasts are fitted: CAS selection strength, CLO selectio
 
 | Script | Purpose |
 |---|---|
-| `GLM_Script.R` | Fits per-SNP GLMs across all six treatments and three cross-treatment contrasts; writes two master results tables of β coefficients and FDR-adjusted p-values |
+| `GLM_Script.R` | Fits per-SNP GLMs across all six treatments and three cross-treatment contrasts; writes two master results tables of β coefficients and FDR-adjusted p-values | Generates Figs. # |
 
 Produces model output only — figures from these results are generated in stage 3. Input and output files are hosted on Figshare.
 
@@ -130,7 +130,7 @@ Identifies candidate SNPs, then annotates and characterizes them:
 
 | Script | Purpose |
 |---|---|
-| `SNP_analysis_and_annotation_script.R` | Candidate classification, SnpEff annotation, FungAMR enrichment, GO enrichment, and all main-text figures (Figs. 2–5) |
+| `SNP_analysis_and_annotation_script.R` | Candidate classification, SnpEff annotation, FungAMR enrichment, GO enrichment | Generates Figs. # |
 
 > **Note.** SnpEff itself is run outside this repository. The script writes a VCF, SnpEff is run on it separately, and the annotated output is read back in.
 
@@ -144,7 +144,7 @@ Input files are hosted on Figshare; output files are in the repository.
 
 | Script | Purpose |
 |---|---|
-| `Growth_phenotyping_script.R` | Fits logistic growth curves to OD600 data for six assays, models doubling time and carrying capacity, generates Figs. 6 and S6 |
+| `Growth_phenotyping_script.R` | Fits logistic growth curves to OD600 data for six assays, models doubling time and carrying capacity | Generates Figs.  | 
 
 > **Note.** Raw plate-reader exports are converted to formatted tables by a step near the top of the script, commented out by default. The formatted tables it produces are already in `Output_files/` — uncomment only to regenerate them from raw.
 
