@@ -20,7 +20,7 @@ This repository contains the scripts and small input/output files needed to repr
 ### Experimental design
 
 <p align="center">
-  <img src="Experimental_design_overview_fig.png" width="850">
+  <img src="Experimental_design_fig.png" width="850">
 </p>
 
 
