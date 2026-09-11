@@ -74,9 +74,9 @@ Experimental-Evolution-Antifungal-Drugs/
 
 Dose–response assays of the ancestral 4S population, used to select the low and high concentrations of each drug and the combined-drug pairing. 
 
-| Script | Purpose |
-|---|---|
-| `Drug_dose_assays_script.R` | Summarizes OD600 across drug doses and timepoints | Generates Fig. S1 |
+| Script | Purpose | Figures |
+|---|---|---|
+| `Drug_dose_assays_script.R` | Summarizes OD600 across drug doses and timepoints | Fig. S1 |
 
 ---
 
@@ -95,9 +95,9 @@ Filters the merged SNP table to biallelic sites that are:
 
 Also covers coverage QC, exploratory PCA and site frequency spectra, identification of fixed sites, and chromosome VIII coverage.
 
-| Script | Purpose |
-|---|---|
-| `SNP_QC_Workflow_Script.R` | Coverage QC, SNP filtering, PCA, site frequency spectra, fixed-SNP identification, chromosome VIII coverage | Generates Figs.  |
+| Script | Purpose | Figures |
+|---|---|---|
+| `SNP_QC_Workflow_Script.R` | Coverage QC, SNP filtering, PCA, site frequency spectra, fixed-SNP identification, chromosome VIII coverage | Figs.  |
 
 Input and output files for this stage are hosted on Figshare, except `Coverage_Summary_Filtered.csv`, which is in the repository.
 
@@ -110,9 +110,9 @@ Per-SNP quasibinomial GLMs weighted by read depth, fitted in two forms:
 
 Three cross-treatment contrasts are fitted: CAS selection strength, CLO selection strength, and single- vs. combined-drug.
 
-| Script | Purpose |
-|---|---|
-| `GLM_Script.R` | Fits per-SNP GLMs across all six treatments and three cross-treatment contrasts; writes two master results tables of β coefficients and FDR-adjusted p-values | Generates Figs. # |
+| Script | Purpose | Figures |
+|---|---|---|
+| `GLM_Script.R` | Fits per-SNP GLMs across all six treatments and three cross-treatment contrasts; writes two master results tables of β coefficients and FDR-adjusted p-values | Figs. # |
 
 Produces model output only — figures from these results are generated in stage 3. Input and output files are hosted on Figshare.
 
@@ -128,9 +128,9 @@ Identifies candidate SNPs, then annotates and characterizes them:
 - Cross-references against the *S. cerevisiae* subset of the FungAMR database (Bédard et al. 2025)
 - Tests for GO biological process enrichment with `topGO`, with redundancy reduction in `rrvgo`
 
-| Script | Purpose |
-|---|---|
-| `SNP_analysis_and_annotation_script.R` | Candidate classification, SnpEff annotation, FungAMR enrichment, GO enrichment | Generates Figs. # |
+| Script | Purpose | Figures |
+|---|---|---|
+| `SNP_analysis_and_annotation_script.R` | Candidate classification, SnpEff annotation, FungAMR enrichment, GO enrichment | Figs. # |
 
 > **Note.** SnpEff itself is run outside this repository. The script writes a VCF, SnpEff is run on it separately, and the annotated output is read back in.
 
@@ -142,9 +142,9 @@ Input files are hosted on Figshare; output files are in the repository.
 
 48-hour growth assays of T14 evolved populations and the ancestor across control, single-drug, combined-drug, and amphotericin B media. 
 
-| Script | Purpose |
-|---|---|
-| `Growth_phenotyping_script.R` | Fits logistic growth curves to OD600 data for six assays, models doubling time and carrying capacity | Generates Figs.  | 
+| Script | Purpose | Figures |
+|---|---|---|
+| `Growth_phenotyping_script.R` | Fits logistic growth curves to OD600 data for six assays, models doubling time and carrying capacity | Figs.  | 
 
 > **Note.** Raw plate-reader exports are converted to formatted tables by a step near the top of the script, commented out by default. The formatted tables it produces are already in `Output_files/` — uncomment only to regenerate them from raw.
 
