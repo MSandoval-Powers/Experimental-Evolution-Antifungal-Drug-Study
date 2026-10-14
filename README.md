@@ -9,13 +9,11 @@ Analysis code and data for **Sandoval-Powers M, Crestani G, Dugo H, Shearman E, 
 
 ## Overview
 
-Replicate populations founded from a genetically diverse, outcrossed **4S** *Saccharomyces cerevisiae* population were experimentally evolved under six selective regimes that varied in both the **intensity** and the **complexity** of antifungal selection. 
+Replicate populations founded from a genetically diverse, outcrossed **4S** *Saccharomyces cerevisiae* population were experimentally evolved under six selective regimes that varied in both the **intensity** and the **complexity** of antifungal selection.
 
 Pooled whole-genome sequencing across three timepoints was used to track genome-wide allele frequency dynamics, and evolved populations were phenotyped for growth performance across drug environments.
 
-This repository contains the scripts and small input/output files needed to reproduce the analyses and figures. Large input and output files related to the Genomics Analysis are archived on Figshare (see [Data availability](#data-availability)). 
-
-> **A note on figures.** Figures are included alongside the scripts that generate them. Where a figure was assembled or annotated for publication, both versions are provided: the .svg written directly by the script, and the final .png after editing in Inkscape. Scripts reproduce the .svg, not the edited version.
+This repository contains the scripts and small input/output files needed to reproduce the analyses and figures. Large files are archived on Figshare (see [Data availability](#data-availability)).
 
 ### Experimental design
 
@@ -23,131 +21,70 @@ This repository contains the scripts and small input/output files needed to repr
   <img src="Figure1.png" width="850">
 </p>
 
+| | |
+|---|---|
+| Treatments | Low and high caspofungin (CAS), low and high clotrimazole (CLO), the two low concentrations combined (CASCLO), and a no-drug control |
+| Populations | 12 replicates per treatment, 72 total, evolved for 14 days |
+| Sampling | T1, T7, T14 → 216 pooled sequencing samples |
+| SNPs | 64,764 biallelic sites after filtering |
+| Coverage | median 86× (range 27×–290×) |
 
-- 72 evolved populations, sampled at T1, T7, and T14 → **216 pooled sequencing samples**.
-- After filtering: **64,764 biallelic SNPs**
-- Median genome-wide coverage of 86× (range 27×–290×).
+### Treatment naming
+
+Sequencing files and NCBI records use the original scheme; the manuscript uses readable labels.
+
+| Original | Manuscript |
+|---|---|
+| `EEA_CAP_S01_*` | Low CAS |
+| `EEA_CAP_S03_*` | High CAS |
+| `EEA_CLO_S01_*` | Low CLO |
+| `EEA_CLO_S03_*` | High CLO |
+| `EEA_CAC_S01_*` | CASCLO |
+| `EEA_CTR_S01_*` | Control |
+
+Timepoints `D01`, `D07` and `D14` correspond to T1, T7 and T14. The ancestor appears as `EEA_anc_4SH_12` and the four founders as `EEA_hap_*`.
+
+> **A note on figures.** Figures are included alongside the scripts that generate them. Where a figure was assembled or annotated for publication, both versions are provided: the `.svg` written directly by the script, and the final `.png` after editing in Inkscape. Scripts reproduce the `.svg`, not the edited version.
 
 ---
 
 ## Repository structure
 
+Each analysis folder has its own README with input and output tables.
+
 ```
 Experimental-Evolution-Antifungal-Drugs/
-├── Drug_Dose_Determination_Analysis/      # Dose–response assays used to determine drug concentrations for experimental evolution
-│   ├── Input_files/
-│   ├── Scripts/
-│   └── Figures/                           # Fig. S1
+├── Drug_Dose_Determination_Analysis/           # Dose–response assays used to set drug concentrations
 ├── Genomics_Analysis/
-│   ├── SNP_QC_Workflow/                   # Coverage QC, filtering, PCA, SFS, identifying fixed SNPs
-│   │   ├── Input_files/                   # See Figshare
-│   │   ├── Output_files/                  # See Figshare, except Coverage_Summary_Filtered.csv
-│   │   ├── Scripts/
-│   │   └── Figures/
-|   |       ├── ChrVIII_Coverage_Plot/     # Fig. S#
-│   │       ├── PCA/                       # Fig. S2
-│   │       └── SFS/                       # Fig. S3
-│   ├── GLM_AF_Change_Workflow/            # Quasibinomial GLMs, candidate SNP identification
-│   │   ├── Input_files/                   # See Figshare
-│   │   ├── Output_files/                  # See Figshare
-│   │   └── Scripts/
-│   └── SNP_Analysis_and_Annotation_Workflow/   # Determining significant SNPs, SnpEff annotation, FungAMR, GO enrichment
-│       ├── Input_files/                   # Partly Figshare
-│       ├── Output_files/
-│       ├── Scripts/
-│       └── Figures/
-│           ├── AF_Trajectory_Plots/       # Fig. S#
-│           ├── Beta_Coefficient_Plot/     # Fig. 2
-│           ├── FKS1_Gene_Track_Plot/      # Fig. S# 
-│           ├── FungAMR_and_GO_Plots/      # Fig. 5
-│           └── Manhattan/                 # Figs. 3, 4
-├── Growth_Phenotyping_Analysis/           # Analysis of growth performance data of evolved populations and ancestor
-│   ├── Input_files/                      
-│   ├── Output_files/
-│   ├── Scripts/
-│   └── Figures/                           # Figs. 6, S# 
+│   ├── SNP_QC_Workflow/                        # Coverage QC, filtering, PCA, SFS, early-fixed sites
+│   ├── GLM_AF_Change_Workflow/                 # Quasibinomial GLMs of allele frequency over time
+│   └── SNP_Analysis_and_Annotation_Workflow/   # Candidate classification, annotation, FungAMR, GO
+├── Growth_Phenotyping_Analysis/                # Growth assays of evolved populations and ancestor
 └── README.md
 ```
 
-
-### `Drug_Dose_Determination_Analysis/`
-
-Dose–response assays of the ancestral 4S population, used to select the low and high concentrations of each drug and the combined-drug pairing. 
-
-| Script | Purpose | Figures |
-|---|---|---|
-| `Drug_dose_assays_script.R` | Summarizes OD600 across drug doses and timepoints | Fig. S1 |
+| Folder | Produces |
+|---|---|
+| [`Drug_Dose_Determination_Analysis/`](Drug_Dose_Determination_Analysis/) | Fig. S1 |
+| [`Genomics_Analysis/`](Genomics_Analysis/) | Figs. 2–5, S2–S6 |
+| [`Growth_Phenotyping_Analysis/`](Growth_Phenotyping_Analysis/) | Figs. 6, S7 |
 
 ---
 
-### `Genomics_Analysis/`
+## Reproducing the analysis
 
-The core genomic workflow, run in three stages. Each stage consumes the previous stage's output. Analysis begins from the merged SNP table; read alignment and variant
-calling were performed separately and are not included here.
+1. Clone this repository.
+2. Download the Figshare deposit and place its folders into the corresponding directories here.
+3. Run `Drug_Dose_Determination_Analysis/` and `Growth_Phenotyping_Analysis/` in any order; both are independent of the genomic workflow.
+4. Run `Genomics_Analysis/` in order:
+   `SNP_QC_Workflow/` → `GLM_AF_Change_Workflow/` → `SNP_Analysis_and_Annotation_Workflow/`
 
-#### 1 · `SNP_QC_Workflow/`
+Before running:
 
-Filters the merged SNP table to biallelic sites that are:
-
-- polymorphic in the ancestor (0.02 < AF < 0.98)
-- covered at read depth ≥ 10 in every population
-- not flagged as low-confidence by the founder genotypes
-
-Also covers coverage QC, exploratory PCA and site frequency spectra, identification of fixed sites, and chromosome VIII coverage.
-
-| Script | Purpose | Figures |
-|---|---|---|
-| `SNP_QC_Workflow_Script.R` | Coverage QC, SNP filtering, PCA, site frequency spectra, fixed-SNP identification, chromosome VIII coverage | Figs.  |
-
-Input and output files for this stage are hosted on Figshare, except `Coverage_Summary_Filtered.csv`, which is in the repository.
-
-#### 2 · `GLM_AF_Change_Workflow/`
-
-Per-SNP quasibinomial GLMs weighted by read depth, fitted in two forms:
-
-- **Single-treatment** (`AF ~ time`) — tests for allele frequency change within an environment
-- **Cross-treatment** (`AF ~ time × treatment`) — compares rates of change across environments
-
-Three cross-treatment contrasts are fitted: CAS selection strength, CLO selection strength, and single- vs. combined-drug.
-
-| Script | Purpose | Figures |
-|---|---|---|
-| `GLM_Script.R` | Fits per-SNP GLMs across all six treatments and three cross-treatment contrasts; writes two master results tables of β coefficients and FDR-adjusted p-values | Figs. # |
-
-Produces model output only — figures from these results are generated in stage 3. Input and output files are hosted on Figshare.
-
-
-#### 3 · `SNP_Analysis_and_Annotation_Workflow/`
-
-Identifies candidate SNPs, then annotates and characterizes them:
-
-- Applies the top 5% significance threshold to the GLM output
-- Classifies candidates as treatment-specific or shared using the pairwise slope contrasts
-- Merges these with the fixed-SNP candidates from stage 1
-- Annotates with SnpEff and summarizes at the gene level
-- Cross-references against the *S. cerevisiae* subset of the FungAMR database (Bédard et al. 2025)
-- Tests for GO biological process enrichment with `topGO`, with redundancy reduction in `rrvgo`
-
-| Script | Purpose | Figures |
-|---|---|---|
-| `SNP_analysis_and_annotation_script.R` | Candidate classification, SnpEff annotation, FungAMR enrichment, GO enrichment | Figs. # |
-
-> **Note.** SnpEff itself is run outside this repository. The script writes a VCF, SnpEff is run on it separately, and the annotated output is read back in.
-
-Input files are hosted on Figshare; output files are in the repository.
-
----
-
-### `Growth_Phenotyping_Analysis/`
-
-48-hour growth assays of T14 evolved populations and the ancestor across control, single-drug, combined-drug, and amphotericin B media. 
-
-| Script | Purpose | Figures |
-|---|---|---|
-| `Growth_phenotyping_script.R` | Fits logistic growth curves to OD600 data for six assays, models doubling time and carrying capacity | Figs.  | 
-
-> **Note.** Raw plate-reader exports are converted to formatted tables by a step near the top of the script, commented out by default. The formatted tables it produces are already in `Output_files/` — uncomment only to regenerate them from raw.
-
+- Write calls (`ggsave`, `write_tsv`, `write.xlsx`) are commented out by default. Uncomment to regenerate outputs.
+- The GLM stage takes ~30 minutes. Its results tables are on Figshare if you want to skip refitting.
+- Read alignment and variant calling are not reproducible from this repository. Start from the filtered SNP table on Figshare to reproduce downstream results.
+- SnpEff runs outside this repository. The annotation script writes a VCF, SnpEff is run on it separately, and the annotated output is read back in.
 
 ---
 
@@ -170,7 +107,7 @@ Files too large for version control are archived on Figshare with **folder names
 **R** ≥ 4.5.1
 
 ```r
-# Required — CRAN
+# CRAN
 install.packages(c(
   "tidyverse",      # ggplot2, dplyr, tidyr, stringr, readr, purrr, tibble
   "data.table", "reshape2", "glue", "scales",
@@ -181,29 +118,12 @@ install.packages(c(
   "pbapply", "openxlsx"
 ))
 
-# Required — Bioconductor
+# Bioconductor
 if (!require("BiocManager")) install.packages("BiocManager")
 BiocManager::install(c("topGO", "org.Sc.sgd.db", "rrvgo", "Rgraphviz", "rtracklayer"))
-
 ```
 
-
----
-
-## Reproducing the analysis
-
-1. Clone this repository.
-2. Download the Figshare deposit and place its folders into the corresponding directories here.
-3. Run `Drug_Dose_Determination_Analysis/` — independent of the others.
-4. Run `Genomics_Analysis/` in order:
-   `SNP_QC_Workflow/` → `GLM_AF_Change_Workflow/` → `SNP_Analysis_and_Annotation_Workflow/`
-5. Run `Growth_Phenotyping_Analysis/` — independent of the genomic workflow.
-
-A few things to know before running:
-
-- Write calls (`ggsave`, `write_tsv`, `write.xlsx`) are commented out by default. Uncomment to regenerate outputs.
-- The GLM stage takes a while. Its results tables are on Figshare if you want to skip refitting.
-- Sequence data processing from raw reads is not reproducible from this repository alone. Start from the filtered SNP table on Figshare to reproduce downstream results.
+Several Bioconductor packages mask `dplyr` verbs. The scripts alias `select`, `filter` and `rename` to the `dplyr` versions after loading.
 
 ---
 
@@ -213,16 +133,10 @@ A few things to know before running:
 [Full citation once published]
 ```
 
-
 ---
 
 ## Contact
 
 **Megan Sandoval-Powers** — sandovme@oregonstate.edu
 
-**Molly K. Burke** — molly.burke@oregonstate.edu
-
 Department of Integrative Biology, Oregon State University, Corvallis, OR 97331, USA
-
----
-
