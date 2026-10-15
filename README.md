@@ -92,7 +92,7 @@ Before running:
 
 | Resource | Location |
 |---|---|
-| Raw sequencing reads, evolved populations | NCBI SRA, BioProject `[accession]` |
+| Raw sequencing reads, evolved populations | NCBI SRA, BioProject `[PRJNA1544638]` |
 | Raw sequencing reads, 4S ancestor | NCBI SRA, [PRJNA678990](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA678990) (Burke et al. 2020) |
 | Large input and output files | Figshare, [`[DOI]`](https://doi.org/PLACEHOLDER) |
 | Analysis code (this repository, archived) | Zenodo, [`[DOI]`](https://doi.org/PLACEHOLDER) |
