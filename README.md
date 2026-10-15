@@ -3,7 +3,7 @@
 Analysis code and data for **Sandoval-Powers M, Crestani G, Dugo H, Shearman E, Burke MK.** *Antifungal intensity and combination shape distinct genomic responses in experimentally evolved Saccharomyces cerevisiae*.
 
 [![DOI](https://img.shields.io/badge/data-Figshare-blue)](https://doi.org/PLACEHOLDER)
-[![Data](https://img.shields.io/badge/reads-NCBI%20SRA-green)](https://www.ncbi.nlm.nih.gov/bioproject/PLACEHOLDER)
+[![Data](https://img.shields.io/badge/reads-NCBI%20SRA-green)](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1544638)
 
 ---
 
@@ -92,7 +92,7 @@ Before running:
 
 | Resource | Location |
 |---|---|
-| Raw sequencing reads, evolved populations | NCBI SRA, BioProject `[PRJNA1544638]` |
+| Raw sequencing reads, evolved populations | NCBI SRA, [PRJNA1544638](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1544638) |
 | Raw sequencing reads, 4S ancestor | NCBI SRA, [PRJNA678990](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA678990) (Burke et al. 2020) |
 | Large input and output files | Figshare, [`[DOI]`](https://doi.org/PLACEHOLDER) |
 | Analysis code (this repository, archived) | Zenodo, [`[DOI]`](https://doi.org/PLACEHOLDER) |
