@@ -1,6 +1,6 @@
 # Experimental-Evolution-Antifungal-Drug-Study
 
-Analysis code and data for **Sandoval-Powers M, Crestani G, Dugo H, Shearman E, Burke MK.** *Antifungal intensity and combination shape distinct genomic responses in experimentally evolved Saccharomyces cerevisiae*.
+Analysis code and data for **Sandoval-Powers M, Crestani G, Dugo H, Shearman E, Burke MK.** *Adaptive responses to antifungal selection depend on dose and drug combination in experimentally evolved yeast*.
 
 [![DOI](https://img.shields.io/badge/data-Figshare-blue)](https://doi.org/PLACEHOLDER)
 [![Data](https://img.shields.io/badge/reads-NCBI%20SRA-green)](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1544638)
